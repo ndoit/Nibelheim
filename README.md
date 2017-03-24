@@ -10,7 +10,9 @@ You need vagrant and virtual box installed to start.
 You will need to [install Ansible](http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx).
 Because our development team consists of only mac developers, this installation
 will feature installation steps for Mac OSX. At least version 2.2 for the
-community role in the next step. For this step for upgrading, there is a known issue
+community role in the next step.
+
+If you have problems for this step for upgrading, there is a known issue
 with mac osx security settings not letting Ansible update to latest 2.2 version.
 [See here](https://github.com/ansible/ansible/issues/13116#issuecomment-239844113)
 
