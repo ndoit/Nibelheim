@@ -1,0 +1,23 @@
+---
+-
+  hosts: all
+  name: "Configure servers with ruby support for single user"
+  roles:
+    -
+      role: rvm_io.ruby
+      rvm1_rubies:
+        - ruby-2.2.5
+      rvm1_user: 'vagrant'
+      tags: ruby
+      rvm1_bundler_install: True
+- hosts: all
+  sudo: true
+  tasks:
+    - name: Install Git
+      yum:
+        name: git
+        state: latest
+    - name: Install openJDK 8
+      yum:
+        name: java-1.8.0-openjdk
+        state: latest
