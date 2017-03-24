@@ -1,0 +1,37 @@
+
+# - name: download neo4j version 3.0.9
+  # get_url:
+  #   url: http://dist.neo4j.org/neo4j-community-3.0.9-unix.tar.gz
+  #   dest: /usr/local/share/.
+- name: Download and unarchive neo4j file
+  unarchive:
+    src: http://dist.neo4j.org/neo4j-community-3.0.9-unix.tar.gz
+    dest: /usr/local/share/.
+    remote_src: True
+
+# wget dist.neo4j.org/neo4j-community-3.0.9-unix.tar.gz
+# echo unzipping
+# tar -xzf neo4j-community-3.0.9-unix.tar.gz
+# echo updating config file
+# sed -i.bak s/#org.neo4j.server.webserver.address=0.0.0.0/org.neo4j.server.webserver.address=0.0.0.0/g neo4j-community-3.0.9/conf/neo4j.conf
+# sed -i.bak s/#dbms.security.auth_enabled=false/dbms.security.auth_enabled=false/g neo4j-community-3.0.9/conf/neo4j.conf
+# sed -i.bak s/dbms.connector.https.enabled=true/dbms.connector.https.enabled=false/g neo4j-community-3.0.9/conf/neo4j.conf
+# sed -i.bak s/#dbms.connector.http.address=0.0.0.0:7474/dbms.connector.http.address=0.0.0.0:7474/g neo4j-community-3.0.9/conf/neo4j.conf
+# sed -i.bak s/#dbms.allow_format_migration=true/dbms.allow_format_migration=true/g neo4j-community-3.0.9/conf/neo4j.conf
+#
+# # need to delete graph.db from the data/databases/ directory of neo4j-community-3.0.9
+# rm -rf neo4j-community-3.0.9/data/databases/graph.db
+# neo4j-community-3.0.9/bin/neo4j-admin import --mode=database --database=.  --from=/usr/local/share/neo4j-community-2.3.9/data/graph.db/
+#
+# # Then start the neo4j database
+# /usr/local/share/neo4j-community-3.0.9/bin/neo4j start
+#
+# # check whether it worked in the localhost:7474 browser
+#
+# # make sure to stop the server before renaming
+# /usr/local/share/neo4j-community-3.0.9/bin/neo4j stop
+# # echo moving neo4j files into location
+# mv neo4j /neo4j_old/.
+# mv neo4j-community-3.0.9 neo4j
+#
+# sed -i.bak s/dbms.allow_format_migration=true/#dbms.allow_format_migration=true/g neo4j-community-3.0.9/conf/neo4j.conf
