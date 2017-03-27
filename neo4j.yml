@@ -1,4 +1,13 @@
 
+- name: bug fix for libself ivasoidf python error when copying files
+  yum:
+    name: libselinux-python
+    state: latest
+- name: Install openJDK 8
+  yum:
+    name: java-1.8.0-openjdk
+    state: latest
+
 # - name: download neo4j version 3.0.9
   # get_url:
   #   url: http://dist.neo4j.org/neo4j-community-3.0.9-unix.tar.gz
@@ -8,11 +17,28 @@
     src: http://dist.neo4j.org/neo4j-community-3.0.9-unix.tar.gz
     dest: /usr/local/share/.
     remote_src: True
+- name: Update Config file
+  lineinfile:
+    dest: /usr/local/share/neo4j-community-3.0.9/conf/neo4j.conf
+    regexp: '^#org\.neo4j\.server\.webserver\.address=0\.0\.0\.0'
+    line: 'org.neo4j.server.webserver.address=0.0.0.0'
+- name: Uncomment auth_enabled
+  lineinfile:
+    dest: /usr/local/share/neo4j-community-3.0.9/conf/neo4j.conf
+    regexp: '^#dbms.security.auth_enabled=false'
+    line: 'dbms.security.auth_enabled=false'
+- name: Update https.enabled to false
+  lineinfile:
+    dest: /usr/local/share/neo4j-community-3.0.9/conf/neo4j.conf
+    regexp: '^dbms.connector.https.enabled=true'
+    line: 'dbms.connector.https.enabled=false'
+- name: Uncomment http.address
+  lineinfile:
+    dest: /usr/local/share/neo4j-community-3.0.9/conf/neo4j.conf
+    regexp: '^#dbms\.connector\.http\.address=0\.0\.0\.0:7474'
+    line: 'dbms.connector.http.address=0.0.0.0:7474'
 
-# wget dist.neo4j.org/neo4j-community-3.0.9-unix.tar.gz
-# echo unzipping
-# tar -xzf neo4j-community-3.0.9-unix.tar.gz
-# echo updating config file
+
 # sed -i.bak s/#org.neo4j.server.webserver.address=0.0.0.0/org.neo4j.server.webserver.address=0.0.0.0/g neo4j-community-3.0.9/conf/neo4j.conf
 # sed -i.bak s/#dbms.security.auth_enabled=false/dbms.security.auth_enabled=false/g neo4j-community-3.0.9/conf/neo4j.conf
 # sed -i.bak s/dbms.connector.https.enabled=true/dbms.connector.https.enabled=false/g neo4j-community-3.0.9/conf/neo4j.conf
