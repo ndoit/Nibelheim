@@ -1,11 +1,5 @@
-- name: bug fix for libselinux-python error when copying files
-  yum:
-    name: libselinux-python
-    state: latest
-- name: Install openJDK 8
-  yum:
-    name: java-1.8.0-openjdk
-    state: latest
+- name: Install Java and Libselinux-python
+  include: install_java_and_libselinux.yml
 - name: import gpg key for elasticsearch
   command: 'rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch'
 - name: copy elasticsearch repo into yum config

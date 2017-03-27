@@ -1,0 +1,8 @@
+- name: bug fix for libselinux-python error when copying files
+  yum:
+    name: libselinux-python
+    state: latest
+- name: Install openJDK 8
+  yum:
+    name: java-1.8.0-openjdk
+    state: latest
