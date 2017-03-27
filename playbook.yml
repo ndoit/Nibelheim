@@ -17,23 +17,7 @@
     #   yum:
     #     name: git
     #     state: latest
-    # - name: Install openJDK 8
-    #   yum:
-    #     name: java-1.8.0-openjdk
-    #     state: latest
-    # - name: import gpg key for elasticsearch
-    #   command: 'rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch'
-    # - name: bug fix for libself ivasoidf python error when copying files
-    #   yum:
-    #     name: libselinux-python
-    #     state: latest
-    # - name: copy elasticsearch repo into yum config
-    #   copy:
-    #     src: elasticsearch.repo
-    #     dest: /etc/yum.repos.d/elasticsearch.repo
-    # - name: finally, install elasticsearch
-    #   yum:
-    #     name: elasticsearch
-    #     state: latest
-    - name: install neo4j latest
-      include: neo4j.yml
+    # - name: install neo4j latest
+    #   include: neo4j_playbook.yml
+    - name: install elasticsearch latest
+      include: elasticsearch_playbook.yml
