@@ -1,0 +1,6 @@
+- name: install the 'Development tools' package group
+  yum:
+    name: "@Development tools"
+    state: present
+- name: install system updates for centos systems
+  yum: name=* state=latest update_cache=yes

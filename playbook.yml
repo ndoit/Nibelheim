@@ -10,9 +10,11 @@
 #       rvm1_user: 'vagrant'
 #       tags: ruby
 #       rvm1_bundler_install: True
-# - hosts: all
-#   sudo: true
-#   tasks:
+- hosts: all
+  sudo: true
+  tasks:
+    - name: install development tools
+      include: yum_development_tools.yml
 #     - name: Install Git
 #       yum:
 #         name: git
@@ -21,7 +23,7 @@
 #       include: neo4j_playbook.yml
 #     - name: install elasticsearch latest
 #       include: elasticsearch_playbook.yml
-- hosts: all
-  tasks:
-  - name: install git and checkout fenrir master branch
-    include: fenrir_checkout.yml
+# - hosts: all
+#   tasks:
+#   - name: install git and checkout fenrir master branch
+#     include: fenrir_checkout.yml
