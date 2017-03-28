@@ -1,0 +1,13 @@
+
+- name: Install Git
+  sudo: true
+  yum:
+      name: git
+      state: latest
+- name: clone fenrir
+  command: mkdir /vagrant/fenrir
+  command: git clone https://github.com/ndoit/fenrir.git /vagrant/fenrir
+# - git:
+#     repo: 'git@github.com:ndoit/fenrir.git'
+#     dest: /vagrant/.
+#     accept_hostkey: yes

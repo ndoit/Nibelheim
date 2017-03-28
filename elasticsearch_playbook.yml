@@ -1,0 +1,12 @@
+- name: Install Java and Libselinux-python
+  include: install_java_and_libselinux.yml
+- name: import gpg key for elasticsearch
+  command: 'rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch'
+- name: copy elasticsearch repo into yum config
+  copy:
+    src: elasticsearch.repo
+    dest: /etc/yum.repos.d/elasticsearch.repo
+- name: finally, install elasticsearch
+  yum:
+    name: elasticsearch
+    state: latest
