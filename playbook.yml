@@ -1,7 +1,7 @@
 ---
 # -
 #   hosts: all
-#   name: "Configure servers with ruby support for single user"
+#   name: Configure servers with ruby support for single user
 #   roles:
 #     -
 #       role: rvm_io.ruby
@@ -13,10 +13,6 @@
 # - hosts: all
 #   sudo: true
 #   tasks:
-#     - name: Install Git
-#       yum:
-#         name: git
-#         state: latest
 #     - name: install neo4j latest
 #       include: neo4j_playbook.yml
 #     - name: install elasticsearch latest
