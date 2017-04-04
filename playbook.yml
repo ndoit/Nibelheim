@@ -13,6 +13,8 @@
 # - hosts: all
 #   sudo: true
 #   tasks:
+#     - name: install development tools
+#       include: yum_development_tools.yml
 #     - name: install neo4j latest
 #       include: neo4j_playbook.yml
 #     - name: install elasticsearch latest

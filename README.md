@@ -5,6 +5,8 @@ This is a replacement for deprecated [Midgar](https://github.com/ndoit/midgar).
 
 You need vagrant and virtual box installed to start.
 
+You will also need to be able to ssh to github from you Mac.
+
 ---
 
 You will need to [install Ansible](http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx).
