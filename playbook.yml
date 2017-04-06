@@ -9,7 +9,7 @@
 #         - ruby-2.2.5
 #       rvm1_user: 'vagrant'
 #       tags: ruby
-#       rvm1_bundler_install: True
+#       rvm1_bundler_install: true
 # - hosts: all
 #   sudo: true
 #   tasks:
@@ -19,12 +19,14 @@
 #       include: neo4j_playbook.yml
 #     - name: install elasticsearch latest
 #       include: elasticsearch_playbook.yml
-# - hosts: all
-#   tasks:
-#   - name: install git and checkout fenrir master branch
-#     include: fenrir_checkout.yml
 - hosts: all
-  sudo: true
+  environment:
+    LD_LIBRARY_PATH: /usr/lib/oracle/12.2/client64/lib/
   tasks:
-    - name: install nginx
-      include: nginx_playbook.yml
+  - name: install git and checkout fenrir master branch
+    include: fenrir_checkout.yml
+# - hosts: all
+#   sudo: true
+#   tasks:
+#     - name: install nginx
+#       include: nginx_playbook.yml
