@@ -20,8 +20,6 @@
 #     - name: install elasticsearch latest
 #       include: elasticsearch_playbook.yml
 - hosts: all
-  environment:
-    LD_LIBRARY_PATH: /usr/lib/oracle/12.2/client64/lib/
   tasks:
   - name: install git and checkout fenrir master branch
     include: fenrir_checkout.yml
