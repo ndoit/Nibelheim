@@ -5,6 +5,17 @@
       state: latest
 - name: Install Oracle Instant Client for ruby oci8 gem for Banner
   include: oracle_instant_client.yml
+- name: install developer tools
+  sudo: true
+  include: yum_development_tools.yml
+- name: install free-tds requirement
+  sudo: true
+  yum:
+    name: freetds
+    state: latest
+  yum:
+    name: freetds-devel
+    state: latest
 - name: create directory to house fenrir
   file:
     path: /vagrant/fenrir
