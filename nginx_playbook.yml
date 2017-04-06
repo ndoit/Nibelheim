@@ -1,0 +1,12 @@
+- name: bug fix for libselinux-python error when copying files
+  yum:
+    name: libselinux-python
+    state: latest
+- name: copy nginx repo into yum config
+  copy:
+    src: yum_repos/nginx.repo
+    dest: /etc/yum.repos.d/nginx.repo
+- name: install nginx
+  yum:
+    name: nginx
+    state: latest

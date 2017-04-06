@@ -1,9 +1,13 @@
-
 - name: Install Git
   sudo: true
   yum:
       name: git
       state: latest
+- name: Install Oracle Instant Client for ruby oci8 gem for Banner
+  include: oracle_instant_client.yml
+- name: create directory to house fenrir
+  file:
+    path: /vagrant/fenrir
+    state: directory
 - name: clone fenrir
-  command: mkdir /vagrant/fenrir
   command: git clone https://github.com/ndoit/fenrir.git /vagrant/fenrir

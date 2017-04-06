@@ -4,7 +4,7 @@
   command: 'rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch'
 - name: copy elasticsearch repo into yum config
   copy:
-    src: elasticsearch.repo
+    src: yum_repos/elasticsearch.repo
     dest: /etc/yum.repos.d/elasticsearch.repo
 - name: finally, install elasticsearch
   yum:
