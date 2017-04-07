@@ -1,46 +1,38 @@
 # Download packages
 - name: download oracle instant client basic rpm package for ruby oci8 gem
-  sudo: true
   get_url:
     url: https://www.dropbox.com/s/330favn7j2pr61v/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm?dl=1
     dest: /tmp
     checksum: md5:1a327c5a6dfd392242dc7c3a7119a805
 - name: download oracle instant client SDK package for ruby oci8 gem
-  sudo: true
   get_url:
     url: https://www.dropbox.com/s/zrl8yvil4i1y5lh/oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm?dl=1
     dest: /tmp
     checksum: md5:31faea3d77ef18264690e0dba85ea6d4
 - name: download oracle instant client sql plus package for ruby oci8 gem
-  sudo: true
   get_url:
     url: https://www.dropbox.com/s/z5aiyd5r2dwcotr/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm?dl=1
     dest: /tmp
     checksum: md5:7c90456fbcdb66eac714327c889695b6
 # # Install packages
 - name: install the oracle instant client basic packages with yum
-  sudo: true
   yum:
     name: /tmp/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm
     state: present
 - name: install the oracle SDK package with yum
-  sudo: true
   yum:
     name: /tmp/oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm
     state: present
 - name: install the oracle SQLplus package with yum
-  sudo: true
   yum:
     name: /tmp/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm
     state: present
 
 - name: install ruby-devel make dependency
-  sudo: true
   yum:
     name: ruby-devel
     state: latest
 - name: Set the environment variable LD_LIBRARY_PATH
-  sudo: true
   lineinfile:
     dest: /etc/environment
     state: present

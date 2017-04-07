@@ -1,0 +1,6 @@
+- name: add repel
+  include: yum_development_tools.yml
+- name: install redis server
+  yum:
+    name: redis
+    state: latest
