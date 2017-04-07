@@ -3,11 +3,11 @@
   yum:
       name: git
       state: latest
-- name: Install Oracle Instant Client for ruby oci8 gem for Banner
-  include: oracle_instant_client.yml
 - name: install developer tools
   sudo: true
   include: yum_development_tools.yml
+- name: Install Oracle Instant Client for ruby oci8 gem for Banner
+  include: oracle_instant_client.yml
 - name: install free-tds requirement
   sudo: true
   yum:
