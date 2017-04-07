@@ -1,30 +1,30 @@
 ---
-# -
-#   hosts: all
-#   name: Configure servers with ruby support for single user
-#   roles:
-#     -
-#       role: rvm_io.ruby
-#       rvm1_rubies:
-#         - ruby-2.2.5
-#       rvm1_user: 'vagrant'
-#       tags: ruby
-#       rvm1_bundler_install: true
-# - hosts: all
-#   sudo: true
-#   tasks:
-#     - name: install development tools
-#       include: yum_development_tools.yml
-#     - name: install neo4j latest
-#       include: neo4j_playbook.yml
-#     - name: install elasticsearch latest
-#       include: elasticsearch_playbook.yml
+-
+  hosts: all
+  name: Configure servers with ruby support for single user
+  roles:
+    -
+      role: rvm_io.ruby
+      rvm1_rubies:
+        - ruby-2.2.5
+      rvm1_user: 'vagrant'
+      tags: ruby
+      rvm1_bundler_install: true
+- hosts: all
+  sudo: true
+  tasks:
+    - name: install development tools
+      include: yum_development_tools.yml
+    - name: install neo4j latest
+      include: neo4j_playbook.yml
+    - name: install elasticsearch latest
+      include: elasticsearch_playbook.yml
 - hosts: all
   tasks:
   - name: install git and checkout fenrir master branch
     include: fenrir_checkout.yml
-# - hosts: all
-#   sudo: true
-#   tasks:
-#     - name: install nginx
-#       include: nginx_playbook.yml
+- hosts: all
+  sudo: true
+  tasks:
+    - name: install nginx
+      include: nginx_playbook.yml
