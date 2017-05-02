@@ -58,6 +58,40 @@ rm VBoxGuestAdditions_5.1.22.iso
 sudo umount /media/VBoxGuestAdditions
 sudo rmdir /media/VBoxGuestAdditions
 ```
+
+To check what version of guest additions you have installed-
+```
+# lsmod | grep -i vbox
+
+Output:
+
+vboxvideo 12575 2
+drm 242038 3 vboxvideo
+vboxsf 39436 0
+vboxguest 228550 8 vboxsf
+
+# modinfo vboxguest
+
+Output:
+
+filename: /lib/modules/3.2.0-29-generic/misc/vboxguest.ko
+>>> version: 4.1.20 <<<
+license: GPL
+description: Oracle VM VirtualBox Guest Additions for Linux Module
+author: Oracle Corporation
+srcversion: F257C1B923A2AC55436E41D
+alias: pci:v000080EEd0000CAFEsv00000000sd00000000bc*sc*i*
+depends:
+vermagic: 3.2.0-29-generic SMP mod_unload modversions
+
+Or if you *really* want to be picky about it ;-)
+
+# lsmod | grep -io vboxguest | xargs modinfo | grep -iw version
+
+Output:
+
+version: 4.1.20
+```
 ---
 
 Once you have the environment setup, the next thing should be to clone this git
