@@ -1,0 +1,6 @@
+- name: include redis in development tools
+  include: yum_development_tools.yml
+- name: install redis server
+  yum:
+    name: redis
+    state: latest

@@ -31,5 +31,34 @@ The command for this is `ansible-galaxy install rvm_io.ruby`
 
 ---
 
+Next install is VirtualBox guest additions. These enable file sharing between
+the guest and host machines. There are several ways to do this. The easiest
+being the vagrant-vbguest plugin.
+
+#### [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest)
+
+This is the easiest install, and involves only running one command
+
+```
+vagrant plugin install vagrant-vbguest
+```
+
+#### Manual Install
+
+The other way is to do it manually. The versions in this doc is 5.1.22, it must
+match your virtualbox version. Consequently, every time you upgrade virtualbox,
+you must also upgrade the guest additions.
+```
+# Remember the guest additions must be installed on your guest machine.
+wget http://download.virtualbox.org/virtualbox/5.1.22/VBoxGuestAdditions_5.1.22.iso
+sudo mkdir /media/VBoxGuestAdditions
+sudo mount -o loop,ro VBoxGuestAdditions_5.1.22.iso /media/VBoxGuestAdditions
+sudo sh /media/VBoxGuestAdditions/VBoxLinuxAdditions.run
+rm VBoxGuestAdditions_5.1.22.iso
+sudo umount /media/VBoxGuestAdditions
+sudo rmdir /media/VBoxGuestAdditions
+```
+---
+
 Once you have the environment setup, the next thing should be to clone this git
 repo and `vagrant up`
