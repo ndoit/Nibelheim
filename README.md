@@ -19,6 +19,12 @@ You will need to be able to ssh to github from you Mac.
 You need [vagrant](https://www.vagrantup.com/downloads.html) and
 virtual box installed to start.
 
+Install Xcode
+---
+Go to the app store on mac and search for Xcode. It should be the top result.
+Download and install, and agree to the license. What you need is a C compiler.
+Go to the terminal when finished installing and make sure `gcc -v` works.
+
 Virtual Box Install
 ---
 
