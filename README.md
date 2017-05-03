@@ -8,10 +8,11 @@ There are several steps to set up the box.
 - Install Vagrant
 - Install VirtualBox
 - Install Xcode
+- Install Pip
 - Install Ansible
 - Ability to SSH to github from your Mac
 - Install rvm ansible community role
--
+- Install the official centos 6 box and startup
 
 You will need to be able to ssh to github from you Mac.
 
@@ -21,6 +22,13 @@ virtual box installed to start.
 Virtual Box Install
 ---
 
+Install Pip
+---
+
+```
+sudo easy_install pip
+```
+
 Ansible install
 ---
 
@@ -29,7 +37,9 @@ Because our development team consists of only mac developers, this installation
 will feature installation steps for Mac OSX. At least version 2.2 for the
 community role in the next step.
 
-You need to install pip
+You need to have pip installed. See the last section.
+
+
 
 If you have problems for this step for upgrading, there is a known issue
 with mac osx security settings not letting Ansible update to latest 2.2 version.
@@ -110,6 +120,17 @@ Or if you *really* want to be picky about it ;-)
 Output:
 
 version: 4.1.20
+```
+
+Install Centos 6 Box
+---
+
+Make sure when you cd into Nibelheim folder that you use the
+[official box](https://atlas.hashicorp.com/centos/boxes/6) from Centos.
+
+It should be this simple command and this starts up the box.
+```
+vagrant init centos/6; vagrant up --provider virtualbox
 ```
 
 You're Done!
