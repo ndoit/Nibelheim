@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "centos/6"
+  config.vm.box = 'centos/6'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -26,10 +26,10 @@ Vagrant.configure(2) do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
 
   # neo4j dev
-  config.vm.network "forwarded_port", guest: 7474, host: 7474
+  config.vm.network 'forwarded_port', guest: 7474, host: 7474
 
   # default rails port
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network 'forwarded_port', guest: 3000, host: 3000
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -45,7 +45,7 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   #
-  # Explicitly state shared folder type as virtualbox as my machine was default
+  # Explicitly state shared folder type for virtualbox as my machine was default
   # to rsync and was not working correctly.
   config.vm.synced_folder '.', '/vagrant', type: 'virtualbox'
 
@@ -55,6 +55,7 @@ Vagrant.configure(2) do |config|
   #
   config.vm.provider 'virtualbox' do |v|
     v.memory = 2048
+    v.cpus = 2
   end
 
   # View the documentation for the provider you are using for more
@@ -71,6 +72,6 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = 'playbook.yml'
   end
 end

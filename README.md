@@ -3,16 +3,33 @@ Nibelheim
 
 This is a replacement for deprecated [Midgar](https://github.com/ndoit/midgar).
 
-You need vagrant and virtual box installed to start.
+There are several steps to set up the box.
 
-You will also need to be able to ssh to github from you Mac.
+- Install Vagrant
+- Install VirtualBox
+- Install Xcode
+- Install Ansible
+- Ability to SSH to github from your Mac
+- Install rvm ansible community role
+-
 
+You will need to be able to ssh to github from you Mac.
+
+You need [vagrant](https://www.vagrantup.com/downloads.html) and
+virtual box installed to start.
+
+Virtual Box Install
+---
+
+Ansible install
 ---
 
 You will need to [install Ansible](http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx).
 Because our development team consists of only mac developers, this installation
 will feature installation steps for Mac OSX. At least version 2.2 for the
 community role in the next step.
+
+You need to install pip
 
 If you have problems for this step for upgrading, there is a known issue
 with mac osx security settings not letting Ansible update to latest 2.2 version.
@@ -21,14 +38,16 @@ with mac osx security settings not letting Ansible update to latest 2.2 version.
 The command that I have seen work when upgrading is
 `sudo pip install --ignore-installed --upgrade ansible`
 
+RVM Ansible Community Role Install
 ---
 
 Next you will need to install an Ansible community role for rvm
 [rvm_io.ruby](https://galaxy.ansible.com/rvm_io/ruby/) which will
 handle our ruby installs and rvm install.
 
-The command for this is `ansible-galaxy install rvm_io.ruby`
+The command for this is `sudo ansible-galaxy install rvm_io.ruby`
 
+Virtual Box Guest Additions Install
 ---
 
 Next install is VirtualBox guest additions. These enable file sharing between
@@ -92,6 +111,8 @@ Output:
 
 version: 4.1.20
 ```
+
+You're Done!
 ---
 
 Once you have the environment setup, the next thing should be to clone this git
