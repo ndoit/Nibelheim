@@ -142,5 +142,5 @@ vagrant init centos/6; vagrant up --provider virtualbox
 You're Done!
 ---
 
-Once you have the environment setup, the next thing should be to clone this git
-repo and `vagrant up`
+Once you have the environment setup, make sure you restart the box and you
+should be able to write awesome code!
