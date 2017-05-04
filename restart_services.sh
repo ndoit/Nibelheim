@@ -2,7 +2,7 @@
 service iptables stop
 
 # start neo4j dev server
-/usr/local/share/neo4j-community-3.0.9/bin/neo4j start
+/usr/local/share/test_neo4j/bin/neo4j start
 
 # restart elasticsearch
 service elasticsearch restart
