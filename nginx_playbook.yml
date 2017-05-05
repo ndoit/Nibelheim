@@ -25,6 +25,7 @@
 - name: Create tmp/pid folder for windows hosts
   file:
     path: /tmp/pid
+    mode: 'u=rwx,g=rwx,o=rwx'
     state: directory
 - name: turn off selinux to prevent nginx permission error
   lineinfile:
@@ -48,5 +49,5 @@
 - name: change nginx.conf to look for sites enabled
   lineinfile:
     dest: /etc/nginx/nginx.conf
-    regexp: ^include /etc/nginx/conf.d/*.conf;
-    line: include /etc/nginx/sites-enabled/*;
+    regexp: ^\s*include \/etc\/nginx\/conf.d\/\*.conf;
+    line: '    include /etc/nginx/sites-enabled/*;'
