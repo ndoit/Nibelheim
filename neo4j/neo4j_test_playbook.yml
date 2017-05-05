@@ -1,12 +1,14 @@
+- vars:
+  neo4j-version: neo4j-community-3.0.9
 - name: Install Java and Libselinux-python
   include: install_java_and_libselinux.yml
 - name: Download and unarchive neo4j file
   unarchive:
-    src: http://dist.neo4j.org/neo4j-community-3.0.9-unix.tar.gz
+    src: http://dist.neo4j.org/{{neo4j-version}}-unix.tar.gz
     dest: /tmp/.
     remote_src: True
-- name: move and rename neo4j-community-3.0.9 to test_neo4j
-  command: mv /tmp/neo4j-community-3.0.9 /usr/local/share/test_neo4j
+- name: move and rename {{neo4j-version}} to test_neo4j
+  command: mv /tmp/{{neo4j-version}} /usr/local/share/test_neo4j
   # creates: /usr/local/share/test_neo4j/data
 - name: Update Config file
   lineinfile:
