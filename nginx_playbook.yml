@@ -26,9 +26,27 @@
   file:
     path: /tmp/pid
     state: directory
-
 - name: turn off selinux to prevent nginx permission error
   lineinfile:
     dest: /etc/sysconfig/selinux
     regexp: ^SELINUX=enforcing
     line: SELINUX=permissive
+- name: move server.crt to nginx folder
+  copy:
+    src: ssl_certificates/server.crt
+    dest: /etc/nginx/ssl/server.crt
+    owner: root
+    group: root
+    mode: 'u=rw,g=r,o=r'
+- name: move server.key to nginx folder
+  copy:
+    src: ssl_certificates/server.key
+    dest: /etc/nginx/ssl/server.key
+    owner: root
+    group: root
+    mode: 'u=rw,g=r,o=r'
+- name: change nginx.conf to look for sites enabled
+  lineinfile:
+    dest: /etc/nginx/nginx.conf
+    regexp: ^include /etc/nginx/conf.d/*.conf;
+    line: include /etc/nginx/sites-enabled/*;
