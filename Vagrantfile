@@ -34,6 +34,9 @@ Vagrant.configure(2) do |config|
   # default elasticsearch port
   config.vm.network 'forwarded_port', guest: 9200, host: 9200
 
+  # forward nginx ssl for application
+  config.vm.network 'forwarded_port', guest: 443, host: 4443
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
