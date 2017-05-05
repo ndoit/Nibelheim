@@ -18,7 +18,17 @@
   file:
     path: /etc/nginx/sites-available
     state: directory
+- name: create ssl folder in nginx
+  file:
+    path: /etc/nginx/ssl
+    state: directory
 - name: Create tmp/pid folder for windows hosts
   file:
     path: /tmp/pid
     state: directory
+
+- name: turn off selinux to prevent nginx permission error
+  lineinfile:
+    dest: /etc/sysconfig/selinux
+    regexp: ^SELINUX=enforcing
+    line: SELINUX=permissive
