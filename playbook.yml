@@ -11,6 +11,8 @@
       tags: ruby
       rvm1_bundler_install: true
 - hosts: all
+  vars:
+    neo4j_version: neo4j-community-3.0.9
   sudo: true
   tasks:
     - name: install redis

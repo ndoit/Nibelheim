@@ -1,30 +1,28 @@
-- vars:
-  neo4j-version: neo4j-community-3.0.9
 - name: Install Java and Libselinux-python
   include: install_java_and_libselinux.yml
 - name: Download and unarchive neo4j file
   unarchive:
-    src: http://dist.neo4j.org/{{neo4j-version}}-unix.tar.gz
+    src: http://dist.neo4j.org/{{neo4j_version}}-unix.tar.gz
     dest: /usr/local/share/.
     remote_src: True
 - name: Update Config file
   lineinfile:
-    dest: /usr/local/share/{{neo4j-version}}/conf/neo4j.conf
+    dest: /usr/local/share/{{neo4j_version}}/conf/neo4j.conf
     regexp: '^#org\.neo4j\.server\.webserver\.address=0\.0\.0\.0'
     line: 'org.neo4j.server.webserver.address=0.0.0.0'
 - name: Turn off login security on neo4j browser
   lineinfile:
-    dest: /usr/local/share/{{neo4j-version}}/conf/neo4j.conf
+    dest: /usr/local/share/{{neo4j_version}}/conf/neo4j.conf
     regexp: '^#dbms.security.auth_enabled=false'
     line: 'dbms.security.auth_enabled=false'
 - name: Update https.enabled to false
   lineinfile:
-    dest: /usr/local/share/{{neo4j-version}}/conf/neo4j.conf
+    dest: /usr/local/share/{{neo4j_version}}/conf/neo4j.conf
     regexp: '^dbms.connector.https.enabled=true'
     line: 'dbms.connector.https.enabled=false'
 - name: Uncomment http.address and set to open 0.0.0.0
   lineinfile:
-    dest: /usr/local/share/{{neo4j-version}}/conf/neo4j.conf
+    dest: /usr/local/share/{{neo4j_version}}/conf/neo4j.conf
     regexp: '^#dbms\.connector\.http\.address=0\.0\.0\.0:7474'
     line: 'dbms.connector.http.address=0.0.0.0:7474'
 # TODO- name: Add 'neos' and 'neop' aliases
