@@ -10,3 +10,15 @@
   yum:
     name: nginx
     state: latest
+- name: create sites-enabled directory
+  file:
+    path: /etc/nginx/sites-enabled
+    state: directory
+- name: create sites-available directory
+  file:
+    path: /etc/nginx/sites-available
+    state: directory
+- name: Create tmp/pid folder for windows hosts
+  file:
+    path: /tmp/pid
+    state: directory
