@@ -2,8 +2,17 @@ Nibelheim
 ===
 
 This is a replacement for deprecated [Midgar](https://github.com/ndoit/midgar).
+Where Midgar was only a self contained and static box, this project is a fully
+fleshed and customized Ansible script. The purpose is 2 fold:
 
-There are several steps to set up the box.
+1. To allow devs to experiment freely without worry. If they made a mistake,
+they could blow the vagrant box away and start over. This has the added benefit
+of making it easier for new devs to onboard quickly
+2. Upgrade infrastructure quickly and easily. When upgrading ruby version, it
+is much easier to just blow away a box and start fresh with a new version of
+ruby instead of upgrading over old versions.
+
+There are several steps needed before running `vagrant up`.
 
 - Install Vagrant
 - Install VirtualBox
