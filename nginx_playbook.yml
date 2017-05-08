@@ -10,3 +10,44 @@
   yum:
     name: nginx
     state: latest
+- name: create sites-enabled directory
+  file:
+    path: /etc/nginx/sites-enabled
+    state: directory
+- name: create sites-available directory
+  file:
+    path: /etc/nginx/sites-available
+    state: directory
+- name: create ssl folder in nginx
+  file:
+    path: /etc/nginx/ssl
+    state: directory
+- name: Create tmp/pid folder for windows hosts
+  file:
+    path: /tmp/pid
+    mode: 'u=rwx,g=rwx,o=rwx'
+    state: directory
+- name: turn off selinux to prevent nginx permission error
+  lineinfile:
+    dest: /etc/sysconfig/selinux
+    regexp: ^SELINUX=enforcing
+    line: SELINUX=permissive
+- name: move server.crt to nginx folder
+  copy:
+    src: ssl_certificates/server.crt
+    dest: /etc/nginx/ssl/server.crt
+    owner: root
+    group: root
+    mode: 'u=rw,g=r,o=r'
+- name: move server.key to nginx folder
+  copy:
+    src: ssl_certificates/server.key
+    dest: /etc/nginx/ssl/server.key
+    owner: root
+    group: root
+    mode: 'u=rw,g=r,o=r'
+- name: change nginx.conf to look for sites enabled
+  lineinfile:
+    dest: /etc/nginx/nginx.conf
+    regexp: ^\s*include \/etc\/nginx\/conf.d\/\*.conf;
+    line: '    include /etc/nginx/sites-enabled/*;'
