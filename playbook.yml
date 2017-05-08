@@ -1,32 +1,32 @@
 ---
-# -
-#   hosts: all
-#   name: Configure servers with ruby support for single user
-#   roles:
-#     -
-#       role: rvm_io.ruby
-#       rvm1_rubies:
-#         - ruby-2.2.5
-#       rvm1_user: 'vagrant'
-#       tags: ruby
-#       rvm1_bundler_install: true
-# - hosts: all
-#   vars:
-#     neo4j_version: neo4j-community-3.0.9
-#   sudo: true
-#   tasks:
-#     - name: install redis
-#       include: redis_playbook.yml
-#     - name: install development tools
-#       include: yum_development_tools.yml
-#     - name: install neo4j latest
-#       include: neo4j/neo4j_playbook.yml
-#     - name: install neo4j TEST
-#       include: neo4j/neo4j_test_playbook.yml
-#     - name: install elasticsearch latest
-#       include: elasticsearch_playbook.yml
-#     - name: install nginx
-#       include: nginx_playbook.yml
+-
+  hosts: all
+  name: Configure servers with ruby support for single user
+  roles:
+    -
+      role: rvm_io.ruby
+      rvm1_rubies:
+        - ruby-2.2.5
+      rvm1_user: 'vagrant'
+      tags: ruby
+      rvm1_bundler_install: true
+- hosts: all
+  vars:
+    neo4j_version: neo4j-community-3.0.9
+  sudo: true
+  tasks:
+    - name: install redis
+      include: redis_playbook.yml
+    - name: install development tools
+      include: yum_development_tools.yml
+    - name: install neo4j latest
+      include: neo4j/neo4j_playbook.yml
+    - name: install neo4j TEST
+      include: neo4j/neo4j_test_playbook.yml
+    - name: install elasticsearch latest
+      include: elasticsearch_playbook.yml
+    - name: install nginx
+      include: nginx_playbook.yml
 - hosts: all
   tasks:
   - name: install git and checkout fenrir master branch
