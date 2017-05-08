@@ -1,6 +1,6 @@
 # This fixes the
 # `WARNING: Max 1024 open files allowed, minimum of 40000 recommended. See the Neo4j manual.`
-# Error when starting neo4j in linux
+# error when starting neo4j in linux
 # http://neo4j.com/docs/1.6.2/configuration-linux-notes.html
 - name: create soft root limit
   lineinfile:
