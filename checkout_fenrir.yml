@@ -17,9 +17,13 @@
   yum:
     name: freetds-devel
     state: latest
+- name: add color to git output
+  command: git config --global color.ui true
 - name: create directory to house fenrir
   file:
     path: /vagrant/fenrir
     state: directory
-- name: clone fenrir
-  command: git clone https://github.com/ndoit/fenrir.git /vagrant/fenrir
+- git:
+    repo: ssh://git@github.com/ndoit/fenrir.git
+    dest: /vagrant/fenrir
+    accept_hostkey: true
