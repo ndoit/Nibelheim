@@ -1,0 +1,29 @@
+# This fixes the
+# `WARNING: Max 1024 open files allowed, minimum of 40000 recommended. See the Neo4j manual.`
+# error when starting neo4j in linux
+# http://neo4j.com/docs/1.6.2/configuration-linux-notes.html
+- name: create soft root limit
+  lineinfile:
+    dest: /etc/security/limits.conf
+    state: present
+    line: root   soft    nofile  40000
+- name: create hard root limit
+  lineinfile:
+    dest: /etc/security/limits.conf
+    state: present
+    line: root   hard    nofile  40000
+- name: create soft vagrant limit
+  lineinfile:
+    dest: /etc/security/limits.conf
+    state: present
+    line: vagrant  soft    nofile  40000
+- name: create hard vagrant limit
+  lineinfile:
+    dest: /etc/security/limits.conf
+    state: present
+    line: vagrant  hard    nofile  40000
+- name: change pam limits as outlined in the manual
+  lineinfile:
+    dest: /etc/pam.d/su
+    state: present
+    line: session         required        pam_limits.so
