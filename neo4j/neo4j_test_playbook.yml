@@ -41,3 +41,6 @@
     dest: /home/vagrant/.bashrc
     state: present
     line: alias teop='sudo /usr/local/share/test_neo4j/bin/neo4j stop'
+# max files fix
+- name: fix max open files error
+  include: neo4j/max_files_fix.yml
