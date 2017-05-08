@@ -1,5 +1,6 @@
 - name: Install Java and Libselinux-python
   include: install_java_and_libselinux.yml
+# Download and unarchive
 - name: Download and unarchive neo4j file
   unarchive:
     src: http://dist.neo4j.org/{{neo4j_version}}-unix.tar.gz
@@ -8,6 +9,7 @@
 - name: move and rename {{neo4j_version}} to test_neo4j
   command: mv /tmp/{{neo4j_version}} /usr/local/share/test_neo4j
   # creates: /usr/local/share/test_neo4j/data
+# Update config files
 - name: Update Config file
   lineinfile:
     dest: /usr/local/share/test_neo4j/conf/neo4j.conf
@@ -28,4 +30,14 @@
     dest: /usr/local/share/test_neo4j/conf/neo4j.conf
     regexp: '^#dbms\.connector\.http\.address=0\.0\.0\.0:7474'
     line: 'dbms.connector.http.address=0.0.0.0:7475'
-# TODO- name: Add 'neos' and 'neop' aliases
+# Add 'teos' and 'teop' aliases
+- name: create teos shortcut command
+  lineinfile:
+    dest: /home/vagrant/.bashrc
+    state: present
+    line: alias teos='sudo /usr/local/share/test_neo4j/bin/neo4j start'
+- name: create teop shortcut command
+  lineinfile:
+    dest: /home/vagrant/.bashrc
+    state: present
+    line: alias teop='sudo /usr/local/share/test_neo4j/bin/neo4j stop'
