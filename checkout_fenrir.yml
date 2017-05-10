@@ -3,6 +3,7 @@
   yum:
       name: git
       state: latest
+# Install needed packages for fenrir. Most involve database connections
 - name: install developer tools
   sudo: true
   include: yum_development_tools.yml
@@ -17,9 +18,19 @@
   yum:
     name: freetds-devel
     state: latest
+# Configure Github
+- name: add color to git output
+  command: git config --global color.ui true
+- name: add github username
+  command: git config --global user.name {{git_user_name}}
+- name: add github email
+  command: git config --global user.email {{git_email}}
+# Create and clone fenrir
 - name: create directory to house fenrir
   file:
     path: /vagrant/fenrir
     state: directory
-- name: clone fenrir
-  command: git clone https://github.com/ndoit/fenrir.git /vagrant/fenrir
+- git:
+    repo: ssh://git@github.com/ndoit/fenrir.git
+    dest: /vagrant/fenrir
+    accept_hostkey: true
