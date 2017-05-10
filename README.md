@@ -25,8 +25,6 @@ There are several steps needed before running `vagrant up`.
 - Ability to SSH to github from your Mac
 - Install the official centos 6 box and startup
 
-You will need to be able to ssh to github from you Mac.
-
 Install Vagrant
 ---
 Installing vagrant is really easy. Go to the
