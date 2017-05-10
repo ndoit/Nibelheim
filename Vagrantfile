@@ -78,6 +78,9 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision :ansible do |ansible|
+    name = `git config --global user.name`.chomp
+    email = `git config --global user.email`.chomp
     ansible.playbook = 'playbook.yml'
+    ansible.extra_vars = { git_user_name: name, git_email: email }
   end
 end
