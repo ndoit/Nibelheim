@@ -172,7 +172,9 @@ git config --gobal user.email
 #=> ryansnodgrass.dev@gmail.com
 ```
 
-If nothing returns follow the directions on github for [username](https://help.github.com/articles/setting-your-username-in-git/) and [email](https://help.github.com/articles/setting-your-email-in-git/)
+If nothing returns follow the directions on github for
+[username](https://help.github.com/articles/setting-your-username-in-git/) and
+[email](https://help.github.com/articles/setting-your-email-in-git/)
 
 You should be able to ssh from github automatically once you tell it to. type:
 ```
@@ -181,7 +183,8 @@ ssh -T git@github.com
 Hi RyanSnodgrass! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-If it does not and gives you `PermissionDenied Public Key` errors, checkout this [walkthrough](https://github.com/ndoit/midgar/blob/master/PermissionDeniedPublicKey.md)
+If it does not and gives you `PermissionDenied Public Key` errors, checkout this
+[walkthrough](https://github.com/ndoit/midgar/blob/master/PermissionDeniedPublicKey.md)
 on fixing it.
 
 Install Centos 6 Box
