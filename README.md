@@ -42,7 +42,8 @@ Xcode will seem unnecessary, unfortunately there is no good standalone C
 compiler available to Mac.  Go to the app store on Mac and search for Xcode.
 It should be the top result. Download and install, and agree to the license.
 
-Go to the terminal when finished installing and make sure you have gcc installed
+Go to the terminal when finished installing and make sure you have gcc
+installed. That's actually all you need from xcode.
 ```
 gcc -v
 ```
