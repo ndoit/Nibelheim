@@ -78,6 +78,13 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision :ansible do |ansible|
+    # vagrant's guiding principle is simplicity. one command `vagrant up` and
+    # have everything done. Therefore, there is currently no way to get user
+    # input. This is important for git user name and email. On a new box git
+    # is blank and a common scenario for the developer to forget that it's blank
+    # and make a few commits as "invalid email address". The solution is to have
+    # the vagrant box grab the git credentials from the host machine and use
+    # those.
     name = `git config --global user.name`.chomp
     email = `git config --global user.email`.chomp
     ansible.playbook = 'playbook.yml'
