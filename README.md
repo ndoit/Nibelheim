@@ -1,7 +1,9 @@
 Nibelheim
 ===
 
-This is a replacement for deprecated [Midgar](https://github.com/ndoit/midgar).
+This is a dedicated vagrant script that creates a virtual development
+environment for [fenrir](https://github.com/ndoit/fenrir). It is intended to be
+a replacement for deprecated [Midgar](https://github.com/ndoit/midgar).
 Where Midgar was only a self contained and static box, this project is a fully
 fleshed and customized Ansible script. The purpose is 2 fold:
 
