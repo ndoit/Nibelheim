@@ -74,7 +74,9 @@ with mac osx security settings not letting Ansible update to latest 2.2 version.
 [See here](https://github.com/ansible/ansible/issues/13116#issuecomment-239844113)
 
 The command that I have seen work when upgrading is
-`sudo pip install --ignore-installed --upgrade ansible`
+```
+sudo pip install --ignore-installed --upgrade ansible
+```
 
 RVM Ansible Community Role Install
 ---
