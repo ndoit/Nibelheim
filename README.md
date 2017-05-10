@@ -164,10 +164,12 @@ profile. Remember, the script uses this so these commands have to return a value
 ```
 # on host machine
 git config --global user.name
+#=> Ryan Snodgrass
 ```
 ```
 # on host machine
 git config --gobal user.email
+#=> ryansnodgrass.dev@gmail.com
 ```
 
 If nothing returns follow the directions on github for [username](https://help.github.com/articles/setting-your-username-in-git/) and [email](https://help.github.com/articles/setting-your-email-in-git/)
