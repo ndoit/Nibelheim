@@ -220,11 +220,11 @@ As of this writing, the migration file is in branch `nibelheim-hacks` on fenrir.
 You'll want to migrate both dev and test neo4j databases.
 ```
 # for dev
-$ cd /vagrant/fenrir
+[vagrant@localhost ~]$ cd /vagrant/fenrir
 [vagrant@localhost fenrir]$ rake neo4j:migrate
 
 # for test
-$ cd /vagrant/fenrir
+[vagrant@localhost ~]$ cd /vagrant/fenrir
 [vagrant@localhost fenrir]$ RAILS_ENV=rspec rake neo4j:migrate
 ```
 
