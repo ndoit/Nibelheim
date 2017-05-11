@@ -34,3 +34,18 @@
     repo: ssh://git@github.com/ndoit/fenrir.git
     dest: /vagrant/fenrir
     accept_hostkey: true
+# install extra global gems
+- name: install bundler
+  command: rvm @global do gem install bundler
+- name: install rubocop
+  command: rvm @global do gem install haml_lint
+- name: install brakeman
+  command: rvm @global do gem install brakeman
+- name: install haml-lint
+  command: rvm @global do gem install haml_lint
+# install npm
+- name: install npm
+  sudo: true
+  yum:
+    name: npm
+    state: latest

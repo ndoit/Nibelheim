@@ -21,7 +21,7 @@ There are several steps needed before running `vagrant up`.
 - Install Xcode
 - Install Pip
 - Install Ansible
-- Install rvm ansible community role
+- Install rvm Ansible community role
 - Have a plan for virtual box guest additions
 - Install github *with credentials* on your mac
 - Ability to SSH to github from your Mac
@@ -158,7 +158,7 @@ version: 4.1.20
 
 GITHUB MUST BE INSTALLED ON YOUR HOST MACHINE
 ---
-The ansible script looks at your credentials on your host machine to streamline
+The Ansible script looks at your credentials on your host machine to streamline
 the github install and prevent a common commit mistake.
 
 Check if you have your credentials set properly. These will be your github
@@ -189,7 +189,7 @@ If it does not and gives you `PermissionDenied Public Key` errors, checkout this
 [walkthrough](https://github.com/ndoit/midgar/blob/master/PermissionDeniedPublicKey.md)
 on fixing it.
 
-Install Centos 6 Box
+Install Centos 6 Box and vagrant up
 ---
 
 Make sure when you cd into Nibelheim folder that you use the
@@ -198,6 +198,66 @@ Make sure when you cd into Nibelheim folder that you use the
 It should be this simple command and this starts up the box.
 ```
 vagrant init centos/6; vagrant up --provider virtualbox
+```
+
+Post Vagrant Up
+===
+
+Once the Ansible script has completed you will need to finish up a few things.
+
+- Drop in the .env.local file
+- Migrate the neo4j database
+- Import the data to neo4j
+- reindex elasticsearch
+- Install eslint
+
+### .env.local
+Ask your friends for this file. It goes into the root directory of fenrir or
+/vagrant/fenrir
+
+### Migrate neo4j database
+As of this writing, the migration file is in branch `nibelheim-hacks` on fenrir.
+You'll want to migrate both dev and test neo4j databases.
+```
+# for dev
+[vagrant@localhost ~]$ cd /vagrant/fenrir
+[vagrant@localhost fenrir]$ rake neo4j:migrate
+
+# for test
+[vagrant@localhost ~]$ cd /vagrant/fenrir
+[vagrant@localhost fenrir]$ RAILS_ENV=rspec rake neo4j:migrate
+```
+
+### Import data to neo4j
+There's 2 ways to do this
+
+1. copy data folder from dev into local
+```
+$ scp -r deploy@bi-portal-dev.oit.nd.edu:/usr/local/share/neo4j/data path/to/Nibelheim
+$ vagrant ssh
+[vagrant@localhost ~]$ cd /vagrant
+[vagrant@localhost vagrant]$ mv data /usr/local/share/neo4j-community-3.0.x/
+```
+2. Use the rake export_neo4j command on the bi-portal-dev box and then use the
+rake import_neo4j command on localhost
+
+### Reindex elasticsearch
+After you imported the data into neo4j, you need to reindex to elasticsearch.
+The test environment does not need to be reindexed, it should do that by itself
+when tests are run.
+```ruby
+# in the rails console for dev environment
+>> [Term, Report, Dataset].each { |i| i.reindex }
+```
+
+### eslint install
+[n](https://github.com/tj/n)
+```
+sudo npm install n -g
+
+sudo n stable
+
+sudo npm install -g eslint
 ```
 
 You're Done!

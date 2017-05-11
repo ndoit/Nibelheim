@@ -1,15 +1,4 @@
 ---
--
-  hosts: all
-  name: Configure servers with ruby support for single user
-  roles:
-    -
-      role: rvm_io.ruby
-      rvm1_rubies:
-        - ruby-2.2.5
-      rvm1_user: 'vagrant'
-      tags: ruby
-      rvm1_bundler_install: true
 - hosts: all
   vars:
     neo4j_version: neo4j-community-3.0.9
@@ -28,6 +17,14 @@
     - name: install nginx
       include: nginx_playbook.yml
 - hosts: all
+  vars:
+    ruby_version: 2.2.5
+  roles:
+    - role: rvm_io.ruby
+      rvm1_rubies:
+        - ruby-{{ruby_version}}
+      rvm1_user: 'vagrant'
+      tags: ruby
   tasks:
   - name: install git and checkout fenrir master branch
     include: checkout_fenrir.yml
