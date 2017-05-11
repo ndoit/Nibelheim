@@ -227,12 +227,20 @@ As of this writing, the migration file is in branch `nibelheim-hacks` on fenrir.
 Eventually, the migration file will be on master branch and it would just work.
 You'll want to migrate both dev and test neo4j databases.
 ```
-# for dev
+# first checkout nibelheim-hacks
 [vagrant@localhost ~]$ cd /vagrant/fenrir
+[vagrant@localhost fenrir]$ git fetch
+[vagrant@localhost fenrir]$ git checkout nibelheim-hacks
+# start neo4j dev database
+[vagrant@localhost fenrir]$ neos
+# then migrate
 [vagrant@localhost fenrir]$ rake neo4j:migrate
 
 # for test
 [vagrant@localhost ~]$ cd /vagrant/fenrir
+# stop dev, start test
+[vagrant@localhost fenrir]$ neop && teos
+# then migrate
 [vagrant@localhost fenrir]$ RAILS_ENV=rspec rake neo4j:migrate
 ```
 
