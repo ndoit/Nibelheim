@@ -201,7 +201,7 @@ vagrant init centos/6; vagrant up --provider virtualbox
 ```
 
 Post Vagrant Up
----
+===
 
 Once the Ansible script has completed you will need to finish up a few things.
 
@@ -220,10 +220,12 @@ As of this writing, the migration file is in branch `nibelheim-hacks` on fenrir.
 You'll want to migrate both dev and test neo4j databases.
 ```
 # for dev
-rake neo4j:migrate
+$ cd /vagrant/fenrir
+[vagrant@localhost fenrir]$ rake neo4j:migrate
 
 # for test
-RAILS_ENV=rspec rake neo4j:migrate
+$ cd /vagrant/fenrir
+[vagrant@localhost fenrir]$ RAILS_ENV=rspec rake neo4j:migrate
 ```
 
 ### Import data to neo4j
@@ -245,10 +247,11 @@ The test environment does not need to be reindexed, it should do that by itself
 when tests are run.
 ```ruby
 # in the rails console for dev environment
-[Term, Report, Dataset].each { |i| i.reindex }
+>> [Term, Report, Dataset].each { |i| i.reindex }
 ```
 
 ### eslint install
+[n](https://github.com/tj/n)
 ```
 sudo npm install n -g
 
