@@ -206,6 +206,7 @@ Post Vagrant Up
 Once the Ansible script has completed you will need to finish up a few things.
 
 - Drop in the .env.local file
+- Bundle install
 - Migrate the neo4j database
 - Import the data to neo4j
 - reindex elasticsearch
@@ -215,8 +216,15 @@ Once the Ansible script has completed you will need to finish up a few things.
 Ask your friends for this file. It goes into the root directory of fenrir or
 /vagrant/fenrir
 
+### Bundle Install gems
+```
+[vagrant@localhost ~]$ cd /vagrant/fenrir
+[vagrant@localhost fenrir]$ bundle install
+```
+
 ### Migrate neo4j database
 As of this writing, the migration file is in branch `nibelheim-hacks` on fenrir.
+Eventually, the migration file will be on master branch and it would just work.
 You'll want to migrate both dev and test neo4j databases.
 ```
 # for dev
