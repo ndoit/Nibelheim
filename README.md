@@ -227,10 +227,12 @@ As of this writing, the migration file is in branch `nibelheim-hacks` on fenrir.
 Eventually, the migration file will be on master branch and it would just work.
 You'll want to migrate both dev and test neo4j databases.
 ```
-# first checkout nibelheim-hacks
+# Checkout nibelheim-hacks. Make sure you're in the fenrir folder
 [vagrant@localhost ~]$ cd /vagrant/fenrir
 [vagrant@localhost fenrir]$ git fetch
 [vagrant@localhost fenrir]$ git checkout nibelheim-hacks
+
+# for dev
 # start neo4j dev database
 [vagrant@localhost fenrir]$ neos
 # then migrate
