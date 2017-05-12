@@ -233,11 +233,6 @@ You'll want to migrate both dev and test neo4j databases.
 [vagrant@localhost fenrir]$ git checkout nibelheim-hacks
 ```
 ```
-# Turn on things like elasticsearch and redis
-[vagrant@localhost ~]$ cd /vagrant
-[vagrant@localhost vagrant]$ sh restart_services.sh
-```
-```
 # for dev
 # start neo4j dev database
 [vagrant@localhost fenrir]$ neos
@@ -263,8 +258,19 @@ $ vagrant ssh
 [vagrant@localhost ~]$ cd /vagrant
 [vagrant@localhost vagrant]$ mv data /usr/local/share/neo4j-community-3.0.x/
 ```
-2. Use the rake export_neo4j command on the bi-portal-dev box and then use the
-rake import_neo4j command on localhost
+2. Use the rake export_neo4j command on the bi-portal-dev box. Move the file
+from the dev box to the fenrir folder in your localhost. Then turn on
+services in the localhost.
+```
+# Turn on services like elasticsearch and redis with just this command
+[vagrant@localhost ~]$ cd /vagrant
+[vagrant@localhost vagrant]$ sh restart_services.sh
+```
+And then use the rake import_neo4j command on localhost
+```
+[vagrant@localhost ~]$ cd /vagrant/fenrir
+[vagrant@localhost fenrir]$ rake RAILS_ENV=development import_neo4j[/vagrant/fenrir/extract_file.json]
+```
 
 ### Reindex elasticsearch
 After you imported the data into neo4j, you need to reindex to elasticsearch.
@@ -276,7 +282,7 @@ when tests are run.
 ```
 
 ### eslint install
-[n](https://github.com/tj/n)
+Use [n](https://github.com/tj/n) to upgrade nodejs. Eslint requires nodejs v4.0
 ```
 sudo npm install n -g
 
