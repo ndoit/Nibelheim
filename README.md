@@ -276,6 +276,9 @@ And then use the rake import_neo4j command on localhost
 After you imported the data into neo4j, you need to reindex to elasticsearch.
 The test environment does not need to be reindexed, it should do that by itself
 when tests are run.
+```
+# Make sure elasticsearch is on
+[vagrant@localhost ~]$ sudo service elasticsearch restart
 ```ruby
 # in the rails console for dev environment
 >> [Term, Report, Dataset].each { |i| i.reindex }
