@@ -231,13 +231,20 @@ You'll want to migrate both dev and test neo4j databases.
 [vagrant@localhost ~]$ cd /vagrant/fenrir
 [vagrant@localhost fenrir]$ git fetch
 [vagrant@localhost fenrir]$ git checkout nibelheim-hacks
-
+```
+```
+# Turn on things like elasticsearch and redis
+[vagrant@localhost ~]$ cd /vagrant
+[vagrant@localhost vagrant]$ sh restart_services.sh
+```
+```
 # for dev
 # start neo4j dev database
 [vagrant@localhost fenrir]$ neos
 # then migrate
 [vagrant@localhost fenrir]$ rake neo4j:migrate
-
+```
+```
 # for test
 [vagrant@localhost ~]$ cd /vagrant/fenrir
 # stop dev, start test
