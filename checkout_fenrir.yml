@@ -18,6 +18,14 @@
   yum:
     name: freetds-devel
     state: latest
+- name: install imagemagick for paperclip gem
+  sudo: true
+  yum:
+    name: ImageMagick
+    state: latest
+  yum:
+    name: ImageMagick-devel
+    state: latest
 # Configure Github
 - name: add color to git output
   command: git config --global color.ui true
