@@ -37,12 +37,18 @@
 # install extra global gems
 - name: install bundler
   command: rvm @global do gem install bundler
+
 - name: install rubocop
-  command: rvm @global do gem install haml_lint
+  command: rvm @global do gem install rubocop
+
 - name: install brakeman
   command: rvm @global do gem install brakeman
+
 - name: install haml-lint
   command: rvm @global do gem install haml_lint
+
+- name: install flog
+  command: rvm @global do gem install flog
 # install npm
 - name: install npm
   sudo: true
