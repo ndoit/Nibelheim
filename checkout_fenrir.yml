@@ -1,8 +1,8 @@
 - name: Install Git
   sudo: true
   yum:
-      name: git
-      state: latest
+    name: git
+    state: latest
 # Install needed packages for fenrir. Most involve database connections
 - name: install developer tools
   sudo: true
@@ -25,6 +25,21 @@
   command: git config --global user.name {{git_user_name}}
 - name: add github email
   command: git config --global user.email {{git_email}}
+# install extra global gems
+- name: install extra global gems
+  command: rvm @global do gem install {{item}}
+  with_items:
+    - bundler
+    - rubocop
+    - brakeman
+    - haml_lint
+    - flog
+# install npm
+- name: install npm
+  sudo: true
+  yum:
+    name: npm
+    state: latest
 # Create and clone fenrir
 - name: create directory to house fenrir
   file:
@@ -34,24 +49,3 @@
     repo: ssh://git@github.com/ndoit/fenrir.git
     dest: /vagrant/fenrir
     accept_hostkey: true
-# install extra global gems
-- name: install bundler
-  command: rvm @global do gem install bundler
-
-- name: install rubocop
-  command: rvm @global do gem install rubocop
-
-- name: install brakeman
-  command: rvm @global do gem install brakeman
-
-- name: install haml-lint
-  command: rvm @global do gem install haml_lint
-
-- name: install flog
-  command: rvm @global do gem install flog
-# install npm
-- name: install npm
-  sudo: true
-  yum:
-    name: npm
-    state: latest
