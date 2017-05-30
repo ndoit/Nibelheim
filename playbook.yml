@@ -18,7 +18,7 @@
       include: nginx_playbook.yml
 - hosts: all
   vars:
-    ruby_version: 2.2.5
+    ruby_version: 2.3.4
   roles:
     - role: rvm_io.ruby
       rvm1_rubies:
