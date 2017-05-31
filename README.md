@@ -211,6 +211,7 @@ Once the Ansible script has completed you will need to finish up a few things.
 - Import the data to neo4j
 - reindex elasticsearch
 - Install eslint
+- Create Your Access
 
 ### .env.local
 Ask your friends for this file. It goes into the root directory of fenrir or
@@ -293,6 +294,15 @@ sudo npm install n -g
 sudo n stable
 
 sudo npm install -g eslint
+```
+
+### Create Your Access
+When you start up with a mostly blank database, you'll find that the site says
+"Your access has been denied." This is because your net id supplied by CAS is
+not in the neo4j database. Run this command to add the current list of admins
+to your local instance, of which, you should be a part.
+```
+rake add_admins
 ```
 
 You're Done!
