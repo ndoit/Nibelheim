@@ -29,7 +29,7 @@ echo ===========================================================================
 echo Bundling gems to start unicorn
 echo ===========================================================================
 
-BUNDLE_GEMFILE=/vagrant/fenrir/Gemfile bundle install
+BUNDLE_GEMFILE=/vagrant/fenrir/Gemfile bundle check || bundle install
 
 echo ===========================================================================
 echo Starting Unicorn
