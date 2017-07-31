@@ -26,10 +26,10 @@ sudo cp /vagrant/fenrir/config/fenrir_nginx_conf /etc/nginx/sites-available
 sudo ln -s /etc/nginx/sites-available/fenrir_nginx_conf /etc/nginx/sites-enabled/
 
 echo ===========================================================================
-echo Bundling gems to start unicorn
+echo Bundling gems
 echo ===========================================================================
 
-BUNDLE_GEMFILE=/vagrant/fenrir/Gemfile bundle check || bundle install
+BUNDLE_GEMFILE=/vagrant/fenrir/Gemfile bundle install
 
 echo ===========================================================================
 echo Starting Unicorn
