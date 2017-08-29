@@ -28,13 +28,32 @@
     name: /tmp/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm
     state: present
 
+# # Install secondary packages
+- name: install the libaio package as per install directions for instant client ruby-oci8
+  yum:
+    name: libaio
+    state: latest
 - name: install ruby-devel make dependency
   yum:
     name: ruby-devel
     state: latest
+
+# # Environment variables
 - name: Set the environment variable LD_LIBRARY_PATH
   lineinfile:
     dest: /etc/environment
     state: present
     regexp: ^LD_LIBRARY_PATH
     line: LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib/
+- name: set nls lang to prevent "Warning: NLS_LANG is not set. fallback to US7ASCII." error
+  lineinfile:
+    dest: /etc/environment
+    state: present
+    regexp: ^NLS_LANG
+    line: NLS_LANG=AMERICAN_AMERICA.WE8ISO8859P1
+- name: define oracle home directory in environment variable
+  lineinfile:
+    dest: /etc/environment
+    state: present
+    regexp: ^ORACLE_HOME
+    line: ORACLE_HOME=/usr/lib/oracle/12.2/client64/
