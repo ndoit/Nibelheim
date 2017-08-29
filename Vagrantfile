@@ -89,5 +89,6 @@ Vagrant.configure(2) do |config|
     email = `git config --global user.email`.chomp
     ansible.playbook = 'playbook.yml'
     ansible.extra_vars = { git_user_name: name, git_email: email }
+    ansible.ask_vault_pass = true
   end
 end

@@ -45,7 +45,7 @@
     state: present
     regexp: ^LD_LIBRARY_PATH
     line: LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib/
-- name: set nls lang to prevent "Warning: NLS_LANG is not set. fallback to US7ASCII." error
+- name: set nls lang to prevent 'Warning NLS_LANG is not set. fallback to US7ASCII' error
   lineinfile:
     dest: /etc/environment
     state: present
@@ -57,3 +57,18 @@
     state: present
     regexp: ^ORACLE_HOME
     line: ORACLE_HOME=/usr/lib/oracle/12.2/client64/
+
+# # Create oracle database connection .ora files. This will use ansible vault.
+# # password in password safe
+- name: create network/admin directory
+  file:
+    path: /usr/lib/oracle/12.2/client64/network/admin
+    state: directory
+- name: copy oracle connection files into the network admin folder
+  copy:
+    src: "{{item}}"
+    dest: /usr/lib/oracle/12.2/client64/network/admin
+  with_items:
+    - oracle_files/ldap.ora
+    - oracle_files/sqlnet.ora
+    - oracle_files/tnsnames.ora
