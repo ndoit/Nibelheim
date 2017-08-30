@@ -14,7 +14,9 @@ This has the added benefit of making it easier for new devs to onboard quickly.
 is much easier to just blow away a box and start fresh with a new version of
 ruby instead of upgrading over old versions.
 
-There are several steps needed before running `vagrant up`.
+There are several steps needed before running `vagrant up`. It looks daunting now, but
+you only have to run this setup once, then the ansible takes care of everything every
+deploy thereafter.
 
 - Install Vagrant
 - Install VirtualBox
