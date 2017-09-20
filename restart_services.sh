@@ -8,7 +8,7 @@ echo ===========================================================================
 echo Start up redis in the background
 echo ===========================================================================
 
-sudo redis-server /etc/redis.conf
+sudo service redis restart
 
 echo ===========================================================================
 echo Killing extraneous processes...
