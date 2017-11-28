@@ -14,6 +14,10 @@ This has the added benefit of making it easier for new devs to onboard quickly.
 is much easier to just blow away a box and start fresh with a new version of
 ruby instead of upgrading over old versions.
 
+Currently Nibelheim is setup for the BI Team's Fenrir project, and the ultimate
+goal down the line is to clone it out to a simple base box that installs ruby and
+a couple common gems. But we're not there yet.
+
 It looks daunting now, but you only have to run this setup once. Then the ansible
 script takes care of everything every `vagrant destroy && vagrant up` deploy
 thereafter.
