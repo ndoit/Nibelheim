@@ -2,7 +2,8 @@
 - hosts: all
   vars:
     neo4j_version: neo4j-community-3.0.9
-  sudo: true
+  become: true
+  become_user: root
   tasks:
     - name: install redis
       include: redis_playbook.yml
