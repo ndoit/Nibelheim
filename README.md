@@ -199,6 +199,13 @@ If it does not and gives you `PermissionDenied Public Key` errors, checkout this
 [walkthrough](https://github.com/ndoit/midgar/blob/master/PermissionDeniedPublicKey.md)
 on fixing it.
 
+If you get "the role rvm_io.ruby was not found" errors
+---
+
+This command may resolve these errors (replacing [username] with your user account name):
+
+sudo chown -R [username] /Users/[username]
+
 Install Centos 6 Box and vagrant up
 ---
 
