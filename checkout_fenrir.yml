@@ -1,17 +1,21 @@
 - name: Install Git
-  sudo: true
+  become: true
+  become_user: root
   yum:
     name: git
     state: latest
 # Install needed packages for fenrir. Most involve database connections
 - name: install developer tools
-  sudo: true
+  become: true
+  become_user: root
   include: yum_development_tools.yml
 - name: Install Oracle Instant Client for ruby oci8 gem for Banner
-  sudo: true
+  become: true
+  become_user: root
   include: oracle_instant_client.yml
 - name: install free-tds requirement
-  sudo: true
+  become: true
+  become_user: root
   yum:
     name: freetds
     state: latest
@@ -36,7 +40,8 @@
     - flog
 # install npm
 - name: install npm
-  sudo: true
+  become: true
+  become_user: root
   yum:
     name: npm
     state: latest
