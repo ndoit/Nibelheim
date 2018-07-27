@@ -313,6 +313,25 @@ sudo n stable
 sudo npm install -g eslint
 ```
 
+### 502 errors
+When you start up the site, you may encounter 502 Bad Gateway errors. This is
+typically the result of nginx being unable to access the unicorn socket. Try
+going into /etc/sysconfig/selinux and changing
+
+SELINUX=permissive
+
+to
+
+SELINUX=disabled
+
+Then log out and restart the virtual machine:
+
+logout
+vagrant reload
+vagrant ssh
+
+If this doesn't work, check /tmp/nginx_error.log for more information.
+
 ### Create Your Access
 When you start up with a mostly blank database, you'll find that the site says
 "Your access has been denied." This is because your net id supplied by CAS is

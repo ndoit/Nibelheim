@@ -2,13 +2,13 @@ echo ===========================================================================
 echo Restart Elasticsearch
 echo ===========================================================================
 
-sudo service elasticsearch restart
+sudo systemctl restart elasticsearch.service
 
 echo ===========================================================================
 echo Start up redis in the background
 echo ===========================================================================
 
-sudo service redis restart
+sudo systemctl restart redis.service
 
 echo ===========================================================================
 echo Killing extraneous processes...
@@ -16,7 +16,7 @@ echo ===========================================================================
 
 sudo /etc/init.d/iptables stop
 sudo kill -9 $(cat /tmp/pid/unicorn.pid)
-sudo service nginx stop
+sudo systemctl stop nginx.service
 
 echo ===========================================================================
 echo Preparing nginx...
@@ -41,4 +41,4 @@ echo ===========================================================================
 echo Starting nginx
 echo ===========================================================================
 
-sudo service nginx start
+sudo systemctl start nginx.service
