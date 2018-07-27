@@ -333,8 +333,6 @@ vagrant ssh
 If this doesn't work, check /tmp/nginx_error.log for more information.
 
 ### Create Your Access
-
-### Create Your Access
 When you start up with a mostly blank database, you'll find that the site says
 "Your access has been denied." This is because your net id supplied by CAS is
 not in the neo4j database. Run this command to add the current list of admins
