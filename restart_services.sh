@@ -2,13 +2,13 @@ echo ===========================================================================
 echo Restart Elasticsearch
 echo ===========================================================================
 
-sudo service elasticsearch restart
+sudo systemctl restart elasticsearch.service
 
 echo ===========================================================================
 echo Start up redis in the background
 echo ===========================================================================
 
-sudo service redis restart
+sudo systemctl restart redis.service
 
 echo ===========================================================================
 echo Killing extraneous processes...
